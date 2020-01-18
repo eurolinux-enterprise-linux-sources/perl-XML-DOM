@@ -1,6 +1,6 @@
 Name:           perl-XML-DOM
 Version:        1.44
-Release:        19%{?dist}
+Release:        17%{?dist}
 Summary:        DOM extension to XML::Parser
 
 Group:          Development/Libraries
@@ -10,25 +10,15 @@ Source0:        http://www.cpan.org/authors/id/T/TJ/TJMATHER/XML-DOM-%{version}.
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-BuildRequires:  perl
-BuildRequires:  perl(ExtUtils::MakeMaker)
-# Run-time:
-BuildRequires:  perl(bytes)
 BuildRequires:  perl(Carp)
 BuildRequires:  perl(Exporter)
-BuildRequires:  perl(FileHandle)
-BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(overload)
-BuildRequires:  perl(strict)
-BuildRequires:  perl(vars)
+BuildRequires:  perl(ExtUtils::MakeMaker)
 BuildRequires:  perl(XML::Parser) >= 2.30
-BuildRequires:  perl(XML::RegExp)
-# Tests:
-BuildRequires:  perl(Test)
-BuildRequires:  perl(utf8)
 BuildRequires:  perl(XML::Parser::PerlSAX) >= 0.07
-Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
+BuildRequires:  perl(XML::RegExp)
+BuildRequires:  perl(Test)
 Requires:       perl(XML::Parser) >= 2.30
+Requires:  perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 Obsoletes:      perl-libxml-enno <= 1.02
 
 %global __provides_exclude %{?__provides_exclude:%__provides_exclude|}perl\\(XML::XQL::Node\\)
@@ -74,12 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Tue Jan 14 2014 Petr Pisar <ppisar@redhat.com> - 1.44-19
-- Specify all dependencies (bug #1052974)
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 1.44-18
-- Mass rebuild 2013-12-27
-
 * Thu Nov 22 2012 Jitka Plesnikova <jplesnik@redhat.com> - 1.44-17
 - Update description
 - Update dependency filter
